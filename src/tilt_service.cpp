@@ -25,6 +25,7 @@ bool sample_imu(std_srvs::Empty::Request& request,std_srvs::Empty::Request&  res
         ROS_INFO("freenect_init() failed\n");
         return false;
     }
+    freenect_select_subdevices(f_ctx,(freenect_device_flags)(FREENECT_DEVICE_MOTOR | FREENECT_DEVICE_CAMERA | FREENECT_DEVICE_AUDIO));
     freenect_set_log_level (f_ctx, FREENECT_LOG_INFO);
     // Scan for kinect devices
     int nr_devices = freenect_num_devices (f_ctx);
